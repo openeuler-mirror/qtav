@@ -1,0 +1,12 @@
+--- a/config.tests/paths.orig.pri	2019-07-11 02:58:59.000000000 +0200
++++ b/config.tests/paths.pri	2022-04-07 16:21:56.008598885 +0200
+@@ -1,7 +1,7 @@
+ TEMPLATE = lib # can not create exe for some platforms (winrt, ios). If check header only, staticlib is fine
+ # not static lib because sometimes we need to check link flags. if qt is static build, this chek may fail. we don't test link for static build because it's impossible to add all dependencies to link flags
+-INCLUDEPATH += $$[QT_INSTALL_HEADERS]
+-LIBS += -L$$[QT_INSTALL_LIBS]
++INCLUDEPATH += $$[QT_INSTALL_HEADERS] $$/usr/include/compat-ffmpeg4
++LIBS += -L$$[QT_INSTALL_LIBS] -L$$[QT_INSTALL_LIBS]/compat-ffmpeg4
+ CONFIG -= qt app_bundle lib_bundle
+ CONFIG += console
+ *msvc*: INCLUDEPATH *= $$PWD/../src/compat/msvc
